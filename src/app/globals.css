@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Surfaces */
+    --background: 36 33% 97%;        /* warm bone */
+    --foreground: 20 22% 12%;        /* deep cocoa */
+
+    --card: 0 0% 100%;
+    --card-foreground: 20 22% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 22% 12%;
+
+    /* Brand */
+    --primary: 20 22% 12%;           /* cocoa */
+    --primary-foreground: 36 33% 97%;
+
+    --secondary: 33 25% 92%;
+    --secondary-foreground: 20 22% 12%;
+
+    --accent: 33 38% 50%;            /* brass */
+    --accent-foreground: 20 22% 12%;
+
+    --muted: 33 25% 92%;
+    --muted-foreground: 24 10% 38%;
+
+    --destructive: 0 64% 42%;
+    --destructive-foreground: 36 33% 97%;
+
+    /* Lines & focus */
+    --border: 30 18% 86%;
+    --input: 30 18% 86%;
+    --ring: 33 38% 50%;
+
+    /* Radius */
+    --radius: 0.25rem;
+  }
+
+  .dark {
+    --background: 20 14% 8%;
+    --foreground: 36 25% 92%;
+
+    --card: 20 14% 10%;
+    --card-foreground: 36 25% 92%;
+
+    --popover: 20 14% 10%;
+    --popover-foreground: 36 25% 92%;
+
+    --primary: 36 25% 92%;
+    --primary-foreground: 20 14% 8%;
+
+    --secondary: 24 10% 16%;
+    --secondary-foreground: 36 25% 92%;
+
+    --accent: 33 38% 55%;
+    --accent-foreground: 20 14% 8%;
+
+    --muted: 24 10% 16%;
+    --muted-foreground: 30 12% 65%;
+
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 36 25% 92%;
+
+    --border: 24 10% 18%;
+    --input: 24 10% 18%;
+    --ring: 33 38% 55%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-background text-foreground font-manrope;
+    font-feature-settings: 'cv11';
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-instrument font-normal;
+  }
+
+  ::selection {
+    background: hsl(var(--accent) / 0.25);
+    color: hsl(var(--foreground));
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer components {
+  .container-prose {
+    @apply mx-auto w-full max-w-[1400px] px-5 sm:px-8 lg:px-12;
+  }
+
+  .eyebrow {
+    @apply text-eyebrow uppercase font-sans font-medium text-muted-foreground;
+  }
+
+  .display-1 {
+    @apply font-serif text-display-xl text-foreground;
+  }
+
+  .display-2 {
+    @apply font-serif text-display-lg text-foreground;
+  }
+
+  .divider {
+    @apply h-px w-full bg-border;
+  }
+
+  .surface-card {
+    @apply rounded-md border border-border bg-card text-card-foreground shadow-soft;
+  }
+
+  .link-elegant {
+    @apply relative inline-flex items-center text-foreground transition-colors duration-250 ease-elegant hover:text-accent;
+  }
+
+  .link-elegant::after {
+    content: '';
+    @apply absolute -bottom-0.5 left-0 h-px w-full origin-right scale-x-0 bg-current transition-transform duration-400 ease-elegant;
+  }
+
+  .link-elegant:hover::after {
+    @apply origin-left scale-x-100;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .text-pretty {
+    text-wrap: pretty;
+  }
+
+  .grain {
+    position: relative;
+  }
+
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9'/></filter><rect width='100%' height='100%' filter='url(%23n)' opacity='0.35'/></svg>");
+    opacity: 0.06;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+  }
+
+  /* ── Stitch utilities ───────────────────────────────────────────────────── */
+
+  /** Scrollable carousel rail — hides scrollbar cross-browser */
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /** Stitch max-width container with desktop horizontal padding */
+  .stitch-container {
+    @apply mx-auto w-full max-w-[1440px] px-[80px];
+  }
+
+  /** Mobile version of the stitch container */
+  .stitch-container-mobile {
+    @apply px-5 sm:px-10 lg:px-[80px];
+  }
+}
+
