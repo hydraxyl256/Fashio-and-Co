@@ -25,7 +25,7 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
   if (!session) notFound();
 
   const supabase = await createSupabaseServerClient();
-  const { data: order } = await supabase
+  const { data } = await supabase
     .from('orders')
     .select(`
       id, order_number, status, placed_at, total_cents, currency,
@@ -40,6 +40,8 @@ export default async function OrderDetailPage({ params }: { params: Promise<{ id
     .eq('id', id)
     .eq('user_id', session.user.id)
     .single();
+
+  const order = data as any;
 
   if (!order) notFound();
 
