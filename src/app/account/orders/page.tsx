@@ -19,13 +19,14 @@ const STATUS_STYLES: Record<string, { bg: string; text: string; label: string }>
 export default async function OrdersPage() {
   const session = await getSession();
   const supabase = await createSupabaseServerClient();
-  const { data: orders } = await supabase
+  const { data } = await supabase
     .from('orders')
     .select('id, order_number, status, placed_at, total_cents, currency')
     .eq('user_id', session?.user.id ?? '')
     .order('placed_at', { ascending: false });
 
-  const list = orders ?? [];
+  const orders = data as any;
+  const list: any[] = orders ?? [];
   const formatPrice = (cents: number, currency: string) =>
     new Intl.NumberFormat('en-KE', { style: 'currency', currency, minimumFractionDigits: 0 }).format(cents / 100);
   const formatDate = (date: string) =>
