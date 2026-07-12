@@ -11,7 +11,7 @@ import { publicEnv } from '@/lib/env';
 export async function updateSupabaseSession(request: NextRequest): Promise<NextResponse> {
   let response = NextResponse.next({ request });
 
-  const supabase = createServerClient<Database>(
+  const supabase = createServerClient<any>(
     publicEnv.NEXT_PUBLIC_SUPABASE_URL,
     publicEnv.NEXT_PUBLIC_SUPABASE_ANON_KEY,
     {
@@ -19,7 +19,7 @@ export async function updateSupabaseSession(request: NextRequest): Promise<NextR
         getAll() {
           return request.cookies.getAll();
         },
-        setAll(cookiesToSet) {
+        setAll(cookiesToSet: { name: string; value: string; options: any }[]) {
           for (const { name, value } of cookiesToSet) {
             request.cookies.set(name, value);
           }

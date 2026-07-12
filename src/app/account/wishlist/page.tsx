@@ -59,7 +59,7 @@ export default async function WishlistPage() {
         price_cents: p.price_cents,
         currency: p.currency,
         cover: cover ? { storage_path: cover.storage_path } : null,
-        category: Array.isArray(p.categories) ? p.categories[0] : p.categories,
+        category: (Array.isArray(p.categories) ? p.categories[0] : p.categories) ?? null,
         default_variant_id: defaultVariant ? defaultVariant.id : null,
       };
     });

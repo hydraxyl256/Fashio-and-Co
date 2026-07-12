@@ -106,7 +106,7 @@ class PesapalProvider implements PaymentProvider {
     const token = await this.getAuthToken();
 
     const payload = {
-      id: request.providerReference || `${request.orderNumber}-${Date.now()}`,
+      id: `${request.orderNumber}-${Date.now()}`,
       currency: request.currency,
       amount: String((request.totalCents / 100).toFixed(2)),
       description: `Order ${request.orderNumber}`,

@@ -76,7 +76,12 @@ export default async function AdminEditCollectionPage({
               isFeatured: collection.is_featured,
               productIds: assignedIds,
             }}
-            products={allProducts ?? []}
+            products={(allProducts ?? []).map(p => ({
+              id: p.id,
+              name: p.name,
+              slug: p.slug,
+              isActive: p.is_active
+            }))}
             saveAction={async (input) => {
               if (!input.id) return { ok: false, error: 'Missing collection id.' };
               const res = await updateCollectionAction({ ...input, id: input.id });

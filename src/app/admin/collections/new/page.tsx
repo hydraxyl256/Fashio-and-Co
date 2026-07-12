@@ -35,7 +35,12 @@ export default async function AdminNewCollectionPage() {
         </p>
       </div>
       <CollectionForm
-        products={products ?? []}
+        products={(products ?? []).map((p: any) => ({
+          id: p.id,
+          name: p.name,
+          slug: p.slug,
+          isActive: p.is_active
+        }))}
         saveAction={createCollectionAction}
         checkSlugAction={checkCollectionSlugAction}
       />

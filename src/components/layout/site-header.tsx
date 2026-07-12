@@ -120,7 +120,7 @@ export function SiteHeader({ wishlist, signedIn }: SiteHeaderProps) {
           </Link>
 
           {/* Wishlist Drawer */}
-          <WishlistDrawer items={wishlist?.items ?? []}>
+          <WishlistDrawer items={wishlist?.items ?? []} signedIn={signedIn}>
             <Button
               variant="ghost"
               size="icon"

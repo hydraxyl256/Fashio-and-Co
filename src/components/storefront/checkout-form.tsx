@@ -101,14 +101,14 @@ export function CheckoutForm({
     // Move to next step
     if (!isLastStep) {
       const nextStepIndex = currentStepIndex + 1;
-      setCurrentStep(STEPS[nextStepIndex]);
+      setCurrentStep(STEPS[nextStepIndex]!);
     }
   };
 
   const handlePrevStep = () => {
     if (!isFirstStep) {
       const prevStepIndex = currentStepIndex - 1;
-      setCurrentStep(STEPS[prevStepIndex]);
+      setCurrentStep(STEPS[prevStepIndex]!);
     }
   };
 
@@ -125,7 +125,7 @@ export function CheckoutForm({
         }
         // Redirect after a brief delay to show success message
         setTimeout(() => {
-          window.location.href = result.data.redirectUrl!;
+          window.location.href = result.data!.redirectUrl!;
         }, 1000);
         toast.success('Redirecting to payment gateway...');
       } else {

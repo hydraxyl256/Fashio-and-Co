@@ -61,14 +61,14 @@ export function FeaturedCollections() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 md:h-[600px]">
           {/* Tile 1: New Arrivals — spans 2 cols */}
           <Link
-            href={TILES[0].href}
+            href={TILES[0]!.href}
             className="md:col-span-2 relative group cursor-pointer overflow-hidden h-[300px] md:h-full block"
-            aria-label={`Shop ${TILES[0].title}`}
+            aria-label={`Shop ${TILES[0]!.title}`}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={TILES[0].imageSrc}
-              alt={TILES[0].imageAlt}
+              src={TILES[0]!.imageSrc}
+              alt={TILES[0]!.imageAlt}
               className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
               loading="lazy"
               decoding="async"
@@ -76,7 +76,7 @@ export function FeaturedCollections() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" aria-hidden />
             <div className="absolute bottom-8 left-8">
               <h3 className="font-playfair text-[24px] font-semibold leading-[32px] text-white mb-2">
-                {TILES[0].title}
+                {TILES[0]!.title}
               </h3>
               <span className="text-white border-b border-white pb-1 font-montserrat text-[12px] font-medium uppercase tracking-[0.12em]">
                 Shop Now
@@ -86,14 +86,14 @@ export function FeaturedCollections() {
 
           {/* Tile 2: Occasion Wear — 1 col */}
           <Link
-            href={TILES[1].href}
+            href={TILES[1]!.href}
             className="relative group cursor-pointer overflow-hidden h-[300px] md:h-full block"
-            aria-label={`Shop ${TILES[1].title}`}
+            aria-label={`Shop ${TILES[1]!.title}`}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={TILES[1].imageSrc}
-              alt={TILES[1].imageAlt}
+              src={TILES[1]!.imageSrc}
+              alt={TILES[1]!.imageAlt}
               className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
               loading="lazy"
               decoding="async"
@@ -101,7 +101,7 @@ export function FeaturedCollections() {
             <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" aria-hidden />
             <div className="absolute bottom-8 left-8">
               <h3 className="font-playfair text-[24px] font-semibold leading-[32px] text-white">
-                {TILES[1].title}
+                {TILES[1]!.title}
               </h3>
             </div>
           </Link>

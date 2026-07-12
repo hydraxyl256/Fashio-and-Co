@@ -10,7 +10,7 @@ import { publicEnv } from '@/lib/env';
  * Session storage defaults to cookies for SSR compatibility.
  */
 export function createSupabaseBrowserClient() {
-  return createBrowserClient<Database>(
+  return createBrowserClient<any>(
     publicEnv.NEXT_PUBLIC_SUPABASE_URL,
     publicEnv.NEXT_PUBLIC_SUPABASE_ANON_KEY,
   );

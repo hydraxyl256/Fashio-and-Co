@@ -42,7 +42,7 @@ export default async function AdminOverviewPage() {
     recentOrders,
     statusCounts,
     lowStock,
-    topProducts,
+    { data: topProducts },
     { count: productCount },
   ] = await Promise.all([
     supabase.from('orders').select('total_cents, currency, status').gte('placed_at', startOfDay),

@@ -25,7 +25,7 @@ export async function getVariantsForProduct(productId: string): Promise<AdminVar
 
 export async function getVariantForAdjust(variantId: string) {
   const supabase = await createSupabaseServerClient();
-  const { data: variant, data: product, data: movements } = await Promise.all([
+  const [{ data: variant }, { data: dummy_product }, { data: movements }] = await Promise.all([
     supabase
       .from('product_variants')
       .select('*')

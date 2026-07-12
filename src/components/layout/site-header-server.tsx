@@ -5,7 +5,7 @@ import { createSupabaseServiceRoleClient } from '@/lib/supabase/admin';
 
 import { SiteHeader } from '@/components/layout/site-header';
 import { CartStoreInitializer } from '@/components/storefront/cart-store-initializer';
-import type { CartDrawerItem } from '@/components/storefront/cart-drawer';
+
 import type { WishlistItem } from '@/components/storefront/wishlist-drawer';
 
 export async function SiteHeaderServer() {

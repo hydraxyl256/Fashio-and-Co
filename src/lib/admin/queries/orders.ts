@@ -108,7 +108,7 @@ export async function getOrderCountByStatus(): Promise<Record<OrderStatus, numbe
     returned: 0,
     refunded: 0,
   };
-  for (const row of data ?? []) {
+  for (const row of (data as Array<{ status: OrderStatus }>) ?? []) {
     counts[row.status] = (counts[row.status] ?? 0) + 1;
   }
   return counts;
