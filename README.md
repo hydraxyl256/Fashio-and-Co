@@ -81,7 +81,7 @@ Fashion & Co. provides a sophisticated digital storefront for customers to brows
 
 ### 1. Clone & Install
 ```bash
-git clone <repository-url>
+git clone https://github.com/hydraxyl256/Fashio-and-Co.git
 cd Fashion-and-Co
 npm install
 ```

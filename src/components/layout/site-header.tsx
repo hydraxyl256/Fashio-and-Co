@@ -7,6 +7,7 @@ import { Menu, Search, User, Heart, ShoppingBag } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { BrandLogo } from '@/components/brand/brand-logo';
 import { MobileNav } from '@/components/layout/mobile-nav';
 import { CartDrawer } from '@/components/storefront/cart-drawer';
 import { WishlistDrawer, type WishlistItem } from '@/components/storefront/wishlist-drawer';
@@ -55,29 +56,29 @@ export function SiteHeader({ wishlist, signedIn }: SiteHeaderProps) {
         scrolled && 'shadow-[0_4px_20px_-2px_rgba(61,23,79,0.08)]',
       )}
     >
-      <div className="flex justify-between items-center w-full px-5 sm:px-10 lg:px-[80px] py-4 max-w-[1440px] mx-auto">
-        {/* Mobile menu trigger */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="lg:hidden"
-          aria-label="Open menu"
-          onClick={() => setMobileOpen(true)}
-        >
-          <Menu aria-hidden />
-        </Button>
+      <div className="relative flex justify-between items-center w-full px-5 sm:px-10 lg:px-[80px] py-4 max-w-[1440px] mx-auto">
+        {/* Brand — left, vertically centered. Real logo, no oversized treatment. */}
+        <div className="flex items-center gap-3">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="lg:hidden -ml-2"
+            aria-label="Open menu"
+            onClick={() => setMobileOpen(true)}
+          >
+            <Menu aria-hidden />
+          </Button>
+          <BrandLogo
+            href="/"
+            label="Fashion & Co. — Home"
+            priority
+            sizes="(max-width: 640px) 88px, (max-width: 1024px) 120px, 144px"
+            className="h-8 sm:h-9 md:h-10"
+          />
+        </div>
 
-        {/* Brand Logo — Stitch: font-display-lg, text-headline-sm, primary colour */}
-        <Link
-          href="/"
-          aria-label="FASHION & CO. — Home"
-          className="font-playfair text-[24px] font-semibold tracking-tighter text-[#430562]"
-        >
-          FASHION &amp; CO.
-        </Link>
-
-        {/* Desktop Navigation — Stitch: label-md, uppercase, tracking-wider */}
-        <nav aria-label="Primary" className="hidden lg:flex items-center gap-8">
+        {/* Desktop Navigation — centered, label-md, uppercase, tracking-wider */}
+        <nav aria-label="Primary" className="hidden lg:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
           {NAV_LINKS.map((link) => {
             const isActive = pathname === link.href;
             return (
@@ -97,7 +98,7 @@ export function SiteHeader({ wishlist, signedIn }: SiteHeaderProps) {
           })}
         </nav>
 
-        {/* Trailing Icons — Stitch order: search, person, favorite, shopping_bag */}
+        {/* Trailing Icons — search, account, wishlist, bag */}
         <div className="flex items-center gap-4 sm:gap-6">
           {/* Search */}
           <Button

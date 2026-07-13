@@ -7,7 +7,6 @@ import { requireStaffOrAdmin } from '@/lib/auth/session';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { createSupabaseServiceRoleClient } from '@/lib/supabase/admin';
 import { logAudit, slugify, nextAvailableSlug } from '@/lib/admin';
-import { isCategorySlugTaken, isCollectionSlugTaken } from '@/lib/admin/queries/tree';
 
 export type ActionResult<T = void> = { ok: true; data?: T } | { ok: false; error: string };
 
@@ -294,7 +293,3 @@ export async function restoreCollectionAction(id: string): Promise<ActionResult>
   revalidatePath('/admin/collections');
   return { ok: true };
 }
-
-// Re-export helpers so consumers can ask for "is the slug free?" without
-// pulling in a second barrel.
-export { isCategorySlugTaken, isCollectionSlugTaken };

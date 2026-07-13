@@ -146,6 +146,27 @@
     text-wrap: pretty;
   }
 
+  /**
+   * Slow, soft fade-in for the loading monogram. Re-used so that the
+   * loading screen and any future "ready" reveal share the same easing
+   * curve, keeping the brand voice quiet and considered.
+   */
+  .brand-mark-fade {
+    animation: brand-mark-fade 1400ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes brand-mark-fade {
+    0%   { opacity: 0; transform: scale(0.96); }
+    60%  { opacity: 0.85; }
+    100% { opacity: 1; transform: scale(1); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .brand-mark-fade {
+      animation: none;
+    }
+  }
+
   .grain {
     position: relative;
   }

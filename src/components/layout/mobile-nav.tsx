@@ -4,6 +4,7 @@ import * as React from 'react';
 import Link from 'next/link';
 
 import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet';
+import { BrandLogo } from '@/components/brand/brand-logo';
 import { cn } from '@/lib/utils';
 
 interface NavLink {
@@ -22,7 +23,16 @@ export function MobileNav({ open, onOpenChange, links }: MobileNavProps) {
     <Sheet open={open} onOpenChange={onOpenChange}>
       <SheetContent side="left" className="w-full max-w-sm p-0">
         <SheetHeader className="border-b border-border">
-          <SheetTitle className="font-serif text-2xl tracking-[0.16em] uppercase">Fashion &amp; Co.</SheetTitle>
+          <div className="pt-1">
+            <BrandLogo
+              href="/"
+              label="Fashion & Co. — Home"
+              variant="lockup"
+              sizes="120px"
+              className="h-9"
+            />
+          </div>
+          <SheetTitle className="sr-only">Menu</SheetTitle>
           <SheetDescription>Womenswear &amp; jewelry, made in Nairobi.</SheetDescription>
         </SheetHeader>
         <nav aria-label="Mobile primary" className="flex flex-col">

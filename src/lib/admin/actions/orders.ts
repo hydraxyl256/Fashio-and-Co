@@ -6,7 +6,7 @@ import { z } from 'zod';
 import { requireStaffOrAdmin } from '@/lib/auth/session';
 import { createSupabaseServiceRoleClient } from '@/lib/supabase/admin';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
-import { logAudit, isTransitionAllowed, ALL_ORDER_STATUSES } from '@/lib/admin';
+import { logAudit, isTransitionAllowed } from '@/lib/admin';
 import type { OrderStatus } from '@/types/database';
 
 export type ActionResult<T = void> = { ok: true; data?: T } | { ok: false; error: string };
@@ -155,5 +155,3 @@ export async function updateOrderInternalNoteAction(
   revalidatePath(`/admin/orders/${parsed.data.orderId}`);
   return { ok: true };
 }
-
-export { ALL_ORDER_STATUSES };

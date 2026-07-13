@@ -60,3 +60,4 @@ test-results
 .parcel-cache
 .eslintcache
 .prettiercache
+.claude

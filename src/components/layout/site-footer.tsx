@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
+import { BrandLogo } from '@/components/brand/brand-logo';
 
 const FOOTER_COLUMNS = [
   {
@@ -43,11 +44,15 @@ export function SiteFooter({ className }: { className?: string }) {
     >
       {/* Main grid */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 px-5 sm:px-10 lg:px-[80px] py-[64px] max-w-[1440px] mx-auto">
-        {/* Brand column */}
+        {/* Brand column — monogram on the footer background, paired with the brand description. */}
         <div className="space-y-6">
-          <h3 className="font-playfair text-[32px] font-semibold leading-[40px] text-[#430562]">
-            FASHION &amp; CO.
-          </h3>
+          <BrandLogo
+            href="/"
+            label="Fashion & Co. — Home"
+            variant="mark"
+            sizes="(max-width: 640px) 120px, 168px"
+            className="h-12 sm:h-14"
+          />
           <p className="text-[16px] leading-[24px] text-[#4d444f]">
             Luxury Curated in Nairobi. Celebrating the spirit of the modern African woman through high-fashion and artisanal craft.
           </p>

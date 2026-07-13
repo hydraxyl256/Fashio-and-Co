@@ -42,12 +42,38 @@ export const metadata: Metadata = {
   description:
     'A Nairobi atelier of considered womenswear and hand-finished jewelry. Crafted slowly, sent with care.',
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'),
+  applicationName: 'Fashion & Co.',
+  authors: [{ name: 'Fashion & Co.', url: 'https://fashionandco.co.ke' }],
+  generator: 'Next.js',
+  keywords: [
+    'fashion Nairobi',
+    'womenswear Kenya',
+    'handmade jewelry',
+    'M-PESA checkout',
+    'considered clothing',
+  ],
   openGraph: {
     type: 'website',
     locale: 'en_KE',
     siteName: 'Fashion & Co.',
+    title: 'Fashion & Co. — Nairobi Womenswear & Jewelry',
+    description:
+      'A Nairobi atelier of considered womenswear and hand-finished jewelry. Crafted slowly, sent with care.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Fashion & Co. — Nairobi Womenswear & Jewelry',
+    description:
+      'A Nairobi atelier of considered womenswear and hand-finished jewelry. Crafted slowly, sent with care.',
   },
   robots: { index: true, follow: true },
+  icons: {
+    icon: [
+      { url: '/icon.png', type: 'image/png', sizes: '32x32' },
+      { url: '/brand/monogram-180.png', type: 'image/png', sizes: '180x180' },
+    ],
+    apple: [{ url: '/apple-icon.png', type: 'image/png', sizes: '180x180' }],
+  },
 };
 
 export const viewport: Viewport = {

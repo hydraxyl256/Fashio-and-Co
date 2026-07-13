@@ -5,7 +5,8 @@ import { z } from 'zod';
 
 import { requireStaffOrAdmin } from '@/lib/auth/session';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
-import { logAudit, slugify } from '@/lib/admin';
+import { logAudit } from '@/lib/admin';
+import { slugify } from '@/lib/admin/slug';
 import { isDiscountCodeTaken } from '@/lib/admin/queries/discounts';
 
 export type ActionResult<T = void> = { ok: true; data?: T } | { ok: false; error: string };
@@ -153,6 +154,3 @@ export async function reactivateDiscountAction(id: string): Promise<ActionResult
   revalidatePath(`/admin/discounts/${id}`);
   return { ok: true };
 }
-
-// re-export for ergonomic imports
-export { slugify };
